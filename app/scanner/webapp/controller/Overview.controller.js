@@ -111,29 +111,45 @@ sap.ui.define([
                 const dateStr = DATE_FORMAT.format(oDate);
                 const timeStr = TIME_FORMAT.format(oDate);
                 const tsNow = new Date().toISOString();
-                const oCtx = this.byId("parcelList").getBinding("items");
+                const oListBinding = this.getView().getModel().bindList("/Parcels", null, null, null, {
+                    $$updateGroupId: PARCEL_UPDATE_GROUP_ID
+                });
 
-                oCtx.attachEventOnce("createCompleted", (oEv) => {
-                    this._oDialog.setBusy(false);    
-                    if (oEv.getParameters().success) {
-                        this.byId("idInput").setValue(null);
-                        this._oDialog.close();                  
-                    } else {
-                        this.byId("idInput").setValueState("Error");
-                    }               
+                oListBinding.attachEventOnce("createCompleted", (oEv) => {
+                    const bIsSuccess = oEv.getParameters().success;
+                    if (!bIsSuccess) {
+                        oListBinding.resetChanges("/Parcels");
+                        MessageBox.error(this.getText("overview.parcelList.messageBox.error"));
+                    }
                 }, this);
 
+                oListBinding.create({
+                    ID: iId,
+                    providerId: iProviderId,
+                    providerName: sProviderName,
+                    status: PARCEL_STATUS_CREATED_BY_SCAN,
+                    scanDateTime: tsNow,
+                    deliveryDate: dateStr,
+                    deliveryTime: timeStr,
+                });   
+                this._submitBatch();
+            },
+
+            _submitBatch() {  
                 this._oDialog.setBusy(true);
-                this.byId("parcelList").getBinding("items")
-                    .create({
-                        ID: iId,
-                        providerId: iProviderId,
-                        providerName: sProviderName,
-                        status: PARCEL_STATUS_CREATED_BY_SCAN,
-                        scanDateTime: tsNow,
-                        deliveryDate: dateStr,
-                        deliveryTime: timeStr,
-                    });   
+
+                this.getView().getModel().submitBatch(PARCEL_UPDATE_GROUP_ID)
+                    .then(() => {
+                        this._oDialog.close();
+                    })
+                    .catch(() => { 
+                        this._oDialog.close();
+                    })
+                    .finally((res) => {
+                        this.byId("idInput").setValue(null);
+                        this._oDialog.setBusy(false);
+                        this.getView().getModel().refresh();
+                    });
             },
 
            _getDefaultFilter() {

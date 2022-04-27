@@ -16,6 +16,9 @@
                         width="auto"
                         items="{
                             path: '/Parcels',
+                            parameters: {
+                                $$updateGroupId : 'parcels'
+                            },
                             sorter: [{
                                 path: 'scanDateTime', 
                                 descending: true                                    
