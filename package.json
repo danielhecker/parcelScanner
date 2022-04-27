@@ -2,7 +2,7 @@
   "name": "parcelscanner",
   "version": "1.0.0",
   "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
+  "repository": "https://github.com/danielhecker/parcelscanner.git",
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
@@ -14,7 +14,8 @@
     "sqlite3": "^5.0.2"
   },
   "scripts": {
-    "start": "cds run"
+    "start": "cds run",
+    "watch": "cds watch"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
