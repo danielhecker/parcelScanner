@@ -1,0 +1,18 @@
+ID;providerId;providerName;sender;deliveryDate;deliveryTime;recipientName;recipientStreet;recipientZip;scanDateTime;status
+31419721105;2760216418;Geek Logistics Systems;Röhrich Installationen GmbH;2022-02-23;15:09:48.0;;;76646;;1
+50580215183;2760216418;Geek Logistics Systems;Mustermann Montage;2022-02-24;17:55:10.0;;;76646;;1
+50580215184;2760216418;Geek Logistics Systems;Mustermann Montage;2022-02-24;17:58:45.0;;;76646;;1
+75890524242;2760216418;Geek Logistics Systems;;2022-02-10;17:38:32.0;Blue Water Systems GmbH + Co KG;John-Deere-Str. 42;76646;;1
+75890524243;2760216418;Geek Logistics Systems;;2022-02-10;17:38:56.0;Blue Water Systems GmbH + Co KG;John-Deere-Str. 42;76646;;1
+71146834971;2760216418;Geek Logistics Systems;Loltec;2022-02-25;18:22:32.0;;;76646;;1
+71146834972;2760216418;Geek Logistics Systems;Loltec;2022-02-25;18:20:07.0;;;76646;;1
+71146834973;2760216418;Geek Logistics Systems;Loltec;2022-02-25;18:21:32.0;;;76646;;1
+71146834974;2760216418;Geek Logistics Systems;Loltec;2022-02-25;18:29:28.0;;;76646;;1
+71146834975;2760216418;Geek Logistics Systems;Hyper Mega Global Systems;2022-02-25;18:22:32.0;;;76646;2022-04-26T06:52:35Z;2
+71146834976;2760216418;Geek Logistics Systems;Hyper Mega Global Systems;2022-02-25;18:20:07.0;;;76646;;1
+71146834977;2760216418;Geek Logistics Systems;Hyper Mega Global Systems;2022-04-27;18:21:32.0;;;76646;;1
+71146834978;2760216418;Geek Logistics Systems;Hyper Mega Global Systems;2022-04-26;18:29:28.0;;;76646;2022-04-26T06:48:35Z;2
+71146834980;2760216419;Trans-o-fix;eXtreme Kitchens;2022-02-25;18:22:32.0;;;76646;;1
+71146834981;2760216419;Trans-o-fix;eXtreme Kitchens;2022-02-25;18:20:07.0;;;76646;;1
+71146834982;2760216419;Trans-o-fix;eXtreme Kitchens;2022-02-25;18:21:32.0;;;76646;;1
+71146834983;2760216419;Trans-o-fix;eXtreme Kitchens;2022-02-25;18:29:28.0;;;76646;;1

@@ -1,0 +1,78 @@
+<mvc:View
+    controllerName="my.parcelscanner.scanner.controller.Overview"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    core:require="{ formatter: 'my/parcelscanner/scanner/model/formatter' }"
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}">
+                   <List
+                        id="parcelList"
+                        class="sapUiResponsiveMargin"
+                        width="auto"
+                        items="{
+                            path: '/Parcels',
+                            sorter: [{
+                                path: 'scanDateTime', 
+                                descending: true                                    
+                            },
+                            {
+                                path: 'deliveryDate',
+                                descending: true
+                            },
+                            {
+                                path: 'deliveryTime',
+                                descending: true
+                            },
+                            {
+                                path : 'ID',
+                                descending: false 
+                            }],
+                            filters: [{
+                                path: 'providerId',
+                                operator: 'EQ',
+                                value1: '2760216418'
+                            }]
+                        }" >
+                         <headerToolbar>
+                            <Toolbar>
+                                <Title text="{i18n>overview.parcelList.headerText}" />
+                                <ToolbarSpacer/>
+                                <SearchField width="50%" search=".onFilterParcels" />
+                                <Button icon="sap-icon://add" press=".onCreateButtonPressed" />
+                            </Toolbar>
+                        </headerToolbar>
+                        <items>
+                            <StandardListItem 
+                                type="{= ${status} > 1 ? 'Inactive' : 'Active' }"
+                                press=".onListItemPressed" 
+                                highlight="{
+                                    path: 'deliveryDate',
+                                    formatter: 'formatter.formatListItemHighlight'
+                                }"
+                                icon="{= ${status} > 1 ? 'sap-icon://complete' : 'sap-icon://bar-code' }"
+                                description="{deliveryDate}"
+                                title="{ID}" 
+                                info="{
+                                    path: 'scanDateTime',
+                                    type: 'sap.ui.model.odata.type.DateTimeOffset',
+                                    constraints: {
+                                        precision: 3,
+                                        v4: true
+                                    },
+                                    formatOptions: {
+                                        pattern: 'dd. MM. yyyy - HH:mm:ss' 
+                                }}"
+                                infoState="{= ${status} > 1 ? 'Success' : 'None' }"
+                                infoStateInverted="true" />
+                        </items>
+                    </List>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

@@ -1,0 +1,46 @@
+<c:FragmentDefinition xmlns="sap.m"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:c="sap.ui.core">
+  <Dialog class="sapUiResponsiveMargin"
+    draggable="true"
+    title="{i18n>fragments.createParcelDialog.title}">
+	<f:SimpleForm>
+			<f:content>
+				<Label text="{i18n>fragments.createParcelDialog.form.label.id}" />
+				<Input id="idInput" type="Number" />
+                <Label text="{i18n>fragments.createParcelDialog.form.label.provider}" />
+				 <Select
+                    id="providerSelect"
+                    showSecondaryValues= "true"
+                    items="{
+                        path: '/Parcels',
+                        parameters: {
+                            $apply: 'groupby((providerName,providerId))'
+                        },
+                        sorter: [
+                            {
+                                path: 'providerName', 
+                                descending: false, 
+                                group: false                                       
+                            }
+                        ]
+                    }">
+                    <c:ListItem 
+                        key="{providerId}"
+                        text="{providerName}" 
+                        additionalText="{providerId}"/>
+                </Select>
+			</f:content>
+		</f:SimpleForm>
+
+        <beginButton>
+            <Button text="{i18n>fragments.createParcelDialog.beginButton.text}"
+                type="Emphasized"
+                press=".onCreateParcelDialogSaveBtnPressed"/>
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>fragments.createParcelDialog.endButton.text}"
+                press=".onCreateParcelDialogCloseBtnPressed"/>
+        </endButton>
+  </Dialog>
+</c:FragmentDefinition>
